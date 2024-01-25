@@ -20,10 +20,6 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/recipe', recipeRoutes);
 
-app.get("/", (req, res, next) => {
-    res.write('<h1>Hello World</h1>')
-    next()
-})
 
 mongoose.connect(process.env.MONG_URI)
     .then(()=>{
