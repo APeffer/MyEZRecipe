@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 
 
 // import routes
-const recipeRoutes = require('../backend/routes/recipeRoutes')
+const recipeRoutes = require('./routes/recipeRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/recipe', recipeRoutes);
+app.use('/api/user', userRoutes);
 
 
 mongoose.connect(process.env.MONG_URI)
