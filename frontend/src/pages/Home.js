@@ -4,15 +4,21 @@ import { useEffect } from 'react';
 
 //components
 import RecipeDetails from '../components/RecipeDetails'
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Home = () => {
     const { recipes, dispatch } = useRecipesContext();
+    const { user } = useAuthContext();
 
     useEffect(() => {
 
         // fetch recipes
         const fetchRecipes = async () => {
-            const response = await fetch('/api/recipe/');
+            const response = await fetch('/api/recipe/', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
             const json = await response.json();
 
             // send to context payload
@@ -20,10 +26,12 @@ const Home = () => {
                 dispatch({type: 'SET_RECIPES', payload: json})
             }
         }
-
-        fetchRecipes();    
+        if (user){
+            fetchRecipes();
+        }
+           
     
-    }, [dispatch])
+    }, [dispatch, user])
 
       
 

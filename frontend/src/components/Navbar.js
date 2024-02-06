@@ -1,7 +1,14 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import { useLogout } from '../hooks/useLogout'
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Navbar = () => {
+    const { logout } = useLogout();
+    const { user } = useAuthContext();
+
+    const handleClick = () => {
+        logout();
+    }
 
     return (
         <header>
@@ -14,8 +21,17 @@ const Navbar = () => {
                     </div>
 
                     <div className='nav-right'>
-                        <Link to="/login" className='nav-link'>Login</Link>
-                        <Link to="/signup" className='nav-link'>Sign Up</Link>
+                        {!user && (
+                            <div>
+                                <Link to="/login" className='nav-link'>Login</Link>
+                                <Link to="/signup" className='nav-link'>Sign Up</Link>
+                            </div>
+                        )}
+                        {user && (
+                            <div>
+                                <button onClick={handleClick} className='nav-link'>Log out</button>
+                            </div>
+                        )}
                     </div>
                 </nav>
                 

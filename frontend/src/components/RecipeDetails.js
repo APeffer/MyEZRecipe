@@ -1,8 +1,10 @@
 import React from 'react';
 import { useRecipesContext } from "../hooks/useRecipesContext";
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const RecipeDetails = ({ recipe }) => {
     const { dispatch } = useRecipesContext();
+    const { user } = useAuthContext();
 
     // function to add ingredient names and amounts to table
     const ingredientArr = () => {

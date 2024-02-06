@@ -6,14 +6,14 @@ export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(null)
     const { dispatch } = useAuthContext();
 
-    const login = async (login, password) => {
+    const login = async (loginCredentials, password) => {
         setIsLoading(true);
         setError(null);
     
         const response = await fetch('/api/user/login', {
-            method: 'GET',
+            method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({login, password})
+            body: JSON.stringify({login: loginCredentials, password})
         })
         
         // json should be jwt
@@ -33,5 +33,5 @@ export const useLogin = () => {
         }
 
     }
-    return ({ login, isLoading, error })
+    return { login, isLoading, error };
 }

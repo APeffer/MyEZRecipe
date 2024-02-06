@@ -28,7 +28,7 @@ nav {
   border-style: none;
   box-shadow: 0px 3px 3px #00000050;
   justify-content: space-between;
-  padding-left: 5%;
+  padding-left: 3%;
   padding-right: 3%;
 }
 
@@ -48,8 +48,12 @@ nav {
 
 .nav-link {
   display: block;
-  position:relative;
-  font-size: large;
+  position: relative;
+  float: left;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  font-size: x-large;
   margin: 0px 10px 0px 10px;
   padding: 6px 0px 6px 0px;
   color: black;
@@ -78,7 +82,7 @@ nav {
 .nav-title {
   margin-right: 20px;
   font-weight: bold;
-  font-size: x-large;
+  font-size: xx-large;
   color: var(--orange);
   text-decoration: none;
 }
@@ -100,6 +104,39 @@ nav {
   padding: 2px 20px 2px 20px;
 }
 
-.recipe-details {
-  margin: 2% auto 2% auto;
+.login-container h1, .signup-container h1, .about-container h1{
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
+
+form {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  width: 25%;
+  align-items:center;
+}
+
+form label {
+
+  font-size: x-large;
+  margin-bottom: 10px;
+}
+
+form input {
+  height: 30px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 525px;
+  margin-bottom: 30px;
+  font-size: large;
+}
+
+form button {
+  border-radius: 0;
+  border-style: solid;
+  border-color: rgb(68, 68, 68);
+  height: 30px;
+  width: 120px;
+}
+
