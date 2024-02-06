@@ -12,7 +12,7 @@ root.render(
 
     <RecipesContextProvider>
       <AuthContextProvider>
-      <App />
+        <App />
       </AuthContextProvider>
     </RecipesContextProvider>
 

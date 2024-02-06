@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Signup from './pages/Signup';
+import Login from './pages/Login';
 import { useAuthContext } from './hooks/useAuthContext';
 
 function App() {
@@ -24,7 +25,12 @@ function App() {
 
             <Route
               path='/signup'
-              element={<Signup/>}
+              element={<Signup />}
+              />
+
+            <Route
+              path='/login'
+              element={<Login />}
               />
 
           </Routes>

@@ -37,7 +37,8 @@ const SignupForm = () => {
         <input 
             type='password' 
             id='password' 
-            maxLength="32" 
+            maxLength="32"
+            minLength={8} 
             onChange={(e) => setPassword(e.target.value)}
             required
         />

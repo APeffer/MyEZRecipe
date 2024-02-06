@@ -1,7 +1,6 @@
-import { Children, useEffect } from "react";
 import SignupForm from "../components/SignupForm";
 
-const Signup = (props) => {
+const Signup = () => {
 
   return(
     <div>

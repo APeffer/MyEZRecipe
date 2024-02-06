@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
 
-    const handleHomeClick = () => {
-
-    }
-
-
     return (
         <header>
             <div className='container'>

@@ -4,9 +4,6 @@ import { useRecipesContext } from "../hooks/useRecipesContext";
 const RecipeDetails = ({ recipe }) => {
     const { dispatch } = useRecipesContext();
 
-    // spread ingredient object to array
-    const recipeIngredients = [...recipe.ingredients];
-
     // function to add ingredient names and amounts to table
     const ingredientArr = () => {
       return recipe.ingredients.map((ingredient, index) => (
