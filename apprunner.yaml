@@ -1,0 +1,13 @@
+version: 1.0
+runtime: nodejs14
+build:
+  commands:
+    pre-build:
+      - n 14.18.3
+    build:      
+      - <<build_command>>
+run: 
+  command: <<start_command>>
+  network:
+    port: <<port>>
+    env: APP_PORT
