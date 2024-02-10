@@ -5,9 +5,9 @@ build:
     pre-build:
       - n 14.18.3
     build:      
-      - <<build_command>>
+      - cd frontend && npm install && npm run build
 run: 
-  command: <<start_command>>
+  command: cd backend && npm install && node server.js
   network:
     port: <<port>>
     env: APP_PORT
