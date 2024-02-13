@@ -8,7 +8,10 @@ const mongoose = require('mongoose');
 const recipeRoutes = require('./routes/recipeRoutes')
 const userRoutes = require('./routes/userRoutes')
 
+const port = 3000;
+
 const app = express();
+
 
 // middlewear
 app.use(express.json());
@@ -25,8 +28,8 @@ app.use('/api/user', userRoutes);
 
 mongoose.connect(process.env.MONG_URI)
     .then(()=>{
-        app.listen(process.env.PORT, ()=> {
-            console.log("Connected to database and listening on port ", process.env.PORT);
+        app.listen(port, ()=> {
+            console.log("Connected to database and listening on port ", port);
         });
     })
     .catch((err)=>{
