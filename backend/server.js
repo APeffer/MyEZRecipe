@@ -33,7 +33,7 @@ app.use('/api/recipe', recipeRoutes);
 app.use('/api/user', userRoutes);
 
 app.options('*', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://my-ez-recipe-frontend.vercel.app')
+    res.setHeader('Access-Control-Allow-Origin', 'https://my-ez-recipe-frontend.vercel.app/api/user/login')
     res.sendStatus(200);
 });
 
