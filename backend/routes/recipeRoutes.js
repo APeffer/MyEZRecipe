@@ -1,19 +1,18 @@
 const express = require('express');
 const { createRecipe, getRecipe, getRecipes, deleteRecipe, } = require('../controllers/recipeController')
-import allowCors from '../middleware/allowCors';
 
 const router = express.Router();
 
 // create recipe
-router.post('/', allowCors(createRecipe));
+router.post('/', createRecipe);
 
 // get a single recipe
-router.get('/:id', allowCors(getRecipe));
+router.get('/:id', getRecipe);
 
 // get all recipes
-router.get('/', allowCors(getRecipes));
+router.get('/', getRecipes);
 
 // delete a single recipe
-router.delete('/:id', allowCors(deleteRecipe));
+router.delete('/:id', deleteRecipe);
 
 module.exports = router;
