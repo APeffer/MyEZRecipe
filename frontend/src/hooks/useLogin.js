@@ -1,39 +1,38 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 
 export const useLogin = () => {
     const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false); // Initialize isLoading as false
     const { dispatch } = useAuthContext();
 
     const login = async (loginCredentials, password) => {
         setIsLoading(true);
         setError(null);
     
-        const response = await fetch('my-ez-recipe-api.vercel.app/api/user/login', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({login: loginCredentials, password})
-        })
-        
-        
+        try {
+            const response = await fetch('https://my-ez-recipe-api.vercel.app/api/user/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ login: loginCredentials, password })
+            });
 
-        if  (!response.ok) {
-            const json = await response.json()
+            if (!response.ok) {
+                const json = await response.json(); // Parse the error message
+                setIsLoading(false);
+                setError(json.error); // Set error message
+                return; // Exit the function early
+            }
+
+            // If response status is ok, continue processing
+            const json = await response.json(); // Parse the JSON response
+            localStorage.setItem('user', JSON.stringify(json)); // Save token to local storage
+            dispatch({ type: 'LOGIN', payload: json }); // Dispatch login action
+        } catch (error) {
             setIsLoading(false);
-            setError(json.error)
+            setError('An error occurred while processing the response.'); // Set a generic error message
         }
-        
-        if (response.ok){
-            // json should be jwt
-            const json = await response.json()
-            //save token to local storage
-            localStorage.setItem('user', JSON.stringify(json))
-            dispatch({type: 'LOGIN', payload: json})
+    };
 
-            setIsLoading(false);
-        }
-
-    }
     return { login, isLoading, error };
-}
+};
