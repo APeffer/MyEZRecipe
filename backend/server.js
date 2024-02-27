@@ -15,7 +15,7 @@ const app = express();
 
 app.use(cors({
     origin:["https://my-ez-recipe-frontend.vercel.app"],
-    methods:["POST", "GET", "DELETE"],
+    methods:["POST", "GET", "DELETE", "OPTIONS"],
     credentials: true
 }));
 
