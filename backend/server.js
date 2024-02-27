@@ -32,9 +32,10 @@ app.use((req, res, next) => {
 app.use('/api/recipe', recipeRoutes);
 app.use('/api/user', userRoutes);
 
-app.options('*', allowCors((req, res) => {
+app.options('*', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://my-ez-recipe-frontend.vercel.app')
     res.sendStatus(200);
-}));
+});
 
 
 mongoose.connect(process.env.MONG_URI)
