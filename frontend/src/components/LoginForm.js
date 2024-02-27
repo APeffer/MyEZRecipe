@@ -22,7 +22,7 @@ const LoginForm = () => {
             onChange={(e)=> setLoginCredentials(e.target.value)} 
             required/>
 
-            <label htmlFor='passwword'>Password:</label>
+            <label htmlFor='password'>Password:</label>
             <input 
             id='password'
             type="password" 
