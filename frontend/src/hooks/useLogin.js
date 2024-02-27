@@ -11,7 +11,7 @@ export const useLogin = () => {
         setError(null);
     
         const response = await fetch('my-ez-recipe-api.vercel.app/api/user/login', {
-            method: 'GET',
+            method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({login: loginCredentials, password})
         })
