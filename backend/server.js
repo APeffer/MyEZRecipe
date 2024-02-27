@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(cors({
-    origin:["my-ez-recipe-frontend.vercel.app"],
+    origin:["https://my-ez-recipe-frontend.vercel.app"],
     methods:["POST", "GET", "DELETE"],
     credentials: true
 }));
