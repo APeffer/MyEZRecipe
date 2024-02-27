@@ -32,9 +32,9 @@ app.use((req, res, next) => {
 app.use('/api/recipe', recipeRoutes);
 app.use('/api/user', userRoutes);
 
-app.options('*', (req, res) => {
+app.options('*', allowCors((req, res) => {
     res.sendStatus(200);
-});
+}));
 
 
 mongoose.connect(process.env.MONG_URI)
