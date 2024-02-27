@@ -7,7 +7,8 @@ const cors = require('cors')
 
 // import routes
 const recipeRoutes = require('./routes/recipeRoutes')
-const userRoutes = require('./routes/userRoutes')
+const userRoutes = require('./routes/userRoutes');
+const allowCors = require('./middleware/allowCors');
 
 const port = process.env.PORT || 3000;
 
@@ -18,7 +19,6 @@ app.use(cors({
     methods:["POST", "GET", "DELETE", "OPTIONS"],
     credentials: true
 }));
-
 
 // middlewear
 app.use(express.json());

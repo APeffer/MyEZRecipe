@@ -34,18 +34,13 @@ const loginUser = async (req, res) => {
         console.log(req.body)
 
         user = await User.login(login, password);
-        res.setHeader('Access-Control-Allow-Origin', "https://my-ez-recipe-frontend.vercel.app")
-        res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
         //create a token
         const token = createToken(user._id);
         res.status(200).json({email:user.email, username: user.username, token});
     } catch(error){
         res.status(400).json({error: error.message})
     }
-    
-
-    
     
 }
 
