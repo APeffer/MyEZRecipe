@@ -3,7 +3,7 @@ import { useAuthContext } from './useAuthContext';
 
 export const useLogin = () => {
     const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
     const { dispatch } = useAuthContext();
 
     const login = async (loginCredentials, password) => {
@@ -11,20 +11,22 @@ export const useLogin = () => {
         setError(null);
     
         const response = await fetch('my-ez-recipe-api.vercel.app/api/user/login', {
-            method: 'POST',
+            method: 'GET',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({login: loginCredentials, password})
         })
         
-        // json should be jwt
-        const json = await response.json()
+        
 
         if  (!response.ok) {
+            const json = await response.json()
             setIsLoading(false);
             setError(json.error)
         }
         
         if (response.ok){
+            // json should be jwt
+            const json = await response.json()
             //save token to local storage
             localStorage.setItem('user', JSON.stringify(json))
             dispatch({type: 'LOGIN', payload: json})
