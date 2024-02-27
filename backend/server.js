@@ -9,7 +9,7 @@ const cors = require('cors')
 const recipeRoutes = require('./routes/recipeRoutes')
 const userRoutes = require('./routes/userRoutes')
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
