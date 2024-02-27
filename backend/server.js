@@ -13,7 +13,11 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin:["my-ez-recipe-frontend.vercel.app"],
+    methods:["POST", "GET", "DELETE"],
+    credentials: true
+}));
 
 
 // middlewear
