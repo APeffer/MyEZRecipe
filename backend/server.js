@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 
 // import routes
@@ -11,6 +12,8 @@ const userRoutes = require('./routes/userRoutes')
 const port = 3000;
 
 const app = express();
+
+app.use(cors());
 
 
 // middlewear
