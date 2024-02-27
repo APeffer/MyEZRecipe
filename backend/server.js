@@ -3,7 +3,6 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
-import allowCors from './middleware/allowCors';
 
 
 // import routes
@@ -33,7 +32,9 @@ app.use((req, res, next) => {
 app.use('/api/recipe', recipeRoutes);
 app.use('/api/user', userRoutes);
 
-app.options('*', allowCors);
+app.options('*', (req, res) => {
+    res.sendStatus(200);
+});
 
 
 mongoose.connect(process.env.MONG_URI)
