@@ -1,7 +1,7 @@
 { 
-  "name": "your-project",
+  "name": "my-ez-recipe",
   "version": "1.0.0",
-  "description": "Your project description",
+  "description": "A CRUD MERN app developed by Alex Peffer",
   "main": "server.js",
   "scripts": {
     "start": "node server.js", 
