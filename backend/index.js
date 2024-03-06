@@ -1,12 +1,16 @@
 require('dotenv').config();
 
+if (process.env){
+    console.log('process.env = true')
+}
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
 
 // import routes
-const recipeRoutes = require('../routes/recipeRoutes');
-const userRoutes = require('../routes/userRoutes');
+const recipeRoutes = require('./routes/recipeRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const port = process.env.PORT || 3000;
 
@@ -14,9 +18,6 @@ const app = express();
 
 // middlewear
 app.use(cors({
-    origin: false
-}))
-app.options('*', cors({
     origin: false
 }))
 
@@ -41,7 +42,11 @@ mongoose.connect(process.env.MONG_URI)
         });
     })
     .catch((err)=>{
+        console.log("process.env.MONG_URI = " + process.env.MONG_URI)
+
+
         console.log(err);
+        
     });
 
 module.exports = app;
