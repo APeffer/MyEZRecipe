@@ -4,8 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 // import routes
-const recipeRoutes = require('./routes/recipeRoutes');
-const userRoutes = require('./routes/userRoutes');
+const recipeRoutes = require('../routes/recipeRoutes');
+const userRoutes = require('../routes/userRoutes');
 
 const port = process.env.PORT || 3000;
 
