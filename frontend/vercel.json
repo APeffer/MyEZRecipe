@@ -1,8 +1,0 @@
-{
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "https://my-ez-recipe-api.vercel.app/api/$1"
-    }
-  ]
-}
