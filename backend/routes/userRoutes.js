@@ -6,7 +6,7 @@ const cors = require('cors')
 
 const router = express.Router();
 
-
+router.options('/login', cors());
 
 router.post('/signup', signupUser);
 
