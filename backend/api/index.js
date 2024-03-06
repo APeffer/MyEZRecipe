@@ -28,6 +28,9 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.get('/testy', (req, res) => {
+    res.send('Test success');
+})
 app.use('/api/recipe', recipeRoutes);
 app.use('/api/user', userRoutes);
 
