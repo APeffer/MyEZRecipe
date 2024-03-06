@@ -4,8 +4,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
 
-import requireCors from '../middleware/requireCors';
-
 // import routes
 const recipeRoutes = require('../routes/recipeRoutes');
 const userRoutes = require('../routes/userRoutes');
@@ -15,7 +13,6 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // middlewear
-app.use(requireCors())
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -24,6 +21,7 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.options('*', cors())
 app.use('/api/recipe', recipeRoutes);
 app.use('/api/user', userRoutes);
 
