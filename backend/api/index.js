@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 // import routes
 const recipeRoutes = require('../routes/recipeRoutes');
@@ -12,6 +13,10 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // middlewear
+app.use(cors({
+    origin: 'https://my-ez-recipe-frontend.vercel.app', // Replace with your frontend domain
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] // Add the HTTP methods you need
+  }));
 app.use(express.json());
 
 app.use((req, res, next) => {
