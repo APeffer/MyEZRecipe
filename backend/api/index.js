@@ -22,6 +22,7 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.options('/api', cors())
 app.use('/api/recipe', recipeRoutes);
 app.use('/api/user', userRoutes);
 
