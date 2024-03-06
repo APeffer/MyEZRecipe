@@ -1,9 +1,12 @@
 const express = require('express');
 const { signupUser, loginUser } = require('../controllers/userController')
+const cors = require('cors')
 
 
 
 const router = express.Router();
+
+
 
 router.post('/signup', signupUser);
 
