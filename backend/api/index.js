@@ -13,10 +13,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // middlewear
-app.use(cors({
-    origin: 'https://my-ez-recipe-frontend.vercel.app', // Replace with your frontend domain
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] // Add the HTTP methods you need
-  }));
+app.use(cors());
 app.use(express.json());
 
 app.use((req, res, next) => {
