@@ -13,6 +13,11 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // middlewear
+app.use(cors({
+    origin: ['https://my-ez-recipe-frontend.vercel.app', 'https://my-ez-recipe-frontend-ayypeff.vercel.app', 'https://my-ez-recipe-frontend-git-main-ayypeff.vercel.app']
+}))
+app.options('*', cors())
+
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -21,7 +26,6 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.options('*', cors())
 app.use('/api/recipe', recipeRoutes);
 app.use('/api/user', userRoutes);
 
