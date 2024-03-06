@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 const corsOptions = {
-    origin: 'https://my-ez-recipe-frontend.vercel.app', // Replace with your frontend domain
+    origin: false, // Replace with your frontend domain
     methods: ['POST'], // Specify allowed methods
     allowedHeaders: ['Content-Type'], // Specify allowed headers
     optionsSuccessStatus: 200 // Specify the success status for preflight requests

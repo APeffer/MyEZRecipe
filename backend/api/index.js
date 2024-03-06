@@ -14,9 +14,11 @@ const app = express();
 
 // middlewear
 app.use(cors({
-    origin: ['https://my-ez-recipe-frontend.vercel.app', 'https://my-ez-recipe-frontend-ayypeff.vercel.app', 'https://my-ez-recipe-frontend-git-main-ayypeff.vercel.app']
+    origin: false
 }))
-app.options('*', cors())
+app.options('*', cors({
+    origin: false
+}))
 
 app.use(express.json());
 
