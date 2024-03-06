@@ -16,7 +16,8 @@ const Home = () => {
         const fetchRecipes = async () => {
             const response = await fetch('https://my-ez-recipe-api.vercel.app/api/recipe/', {
                 headers: {
-                    'Authorization': `Bearer ${user.token}`
+                    'Authorization': `Bearer ${user.token}`,
+                    'Origin': 'https://my-ez-recipe-frontend.vercel.app'
                 }
             });
             const json = await response.json();

@@ -13,7 +13,10 @@ export const useSignup = () => {
     
         const response = await fetch('https://my-ez-recipe-api.vercel.app/api/user/signup', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json',
+                'Origin': 'https://my-ez-recipe-frontend.vercel.app'
+            },
             body: JSON.stringify({email, username, password})
         });
 
