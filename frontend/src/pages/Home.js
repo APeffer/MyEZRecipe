@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import RecipeDetails from '../components/RecipeDetails'
 import { useAuthContext } from '../hooks/useAuthContext';
 
+
 const Home = () => {
     const { recipes, dispatch } = useRecipesContext();
     const { user } = useAuthContext();
@@ -14,10 +15,11 @@ const Home = () => {
 
         // fetch recipes
         const fetchRecipes = async () => {
-            const response = await fetch('https://my-ez-recipe-api.vercel.app/api/recipe/', {
+            const response = await fetch(`${process.env.REACT_APP_API_DOMAIN}/api/recipe/`, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`,
-                    'Origin': 'https://my-ez-recipe-frontend.vercel.app'
+                    // uncomment for CORS
+                    //'Origin': ''
                 }
             });
             const json = await response.json();

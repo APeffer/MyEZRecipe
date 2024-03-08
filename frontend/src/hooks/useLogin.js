@@ -11,11 +11,12 @@ export const useLogin = () => {
         setError(null);
     
         try {
-            const response = await fetch('https://my-ez-recipe-api.vercel.app/api/user/login', {
+            const response = await fetch(`${process.env.REACT_APP_API_DOMAIN}/api/user/login`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json', 
-                    'Origin': 'https://my-ez-recipe-frontend.vercel.app'
+                    // uncomment and set frontend hosting location for CORS
+                    //'Origin': ''
                 },
                 body: JSON.stringify({ login: loginCredentials, password })
             });

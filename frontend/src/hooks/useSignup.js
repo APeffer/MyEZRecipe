@@ -11,11 +11,12 @@ export const useSignup = () => {
         setIsLoading(true);
         setError(null);
     
-        const response = await fetch('https://my-ez-recipe-api.vercel.app/api/user/signup', {
+        const response = await fetch(`${process.env.REACT_APP_API_DOMAIN}/api/user/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Origin': 'https://my-ez-recipe-frontend.vercel.app'
+                // uncomment for CORS
+                //'Origin': ''
             },
             body: JSON.stringify({email, username, password})
         });
