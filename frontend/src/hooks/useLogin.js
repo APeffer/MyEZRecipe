@@ -15,8 +15,7 @@ export const useLogin = () => {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json', 
-                    // uncomment and set frontend hosting location for CORS
-                    //'Origin': ''
+                    'Origin': `${process.env.REACT_APP_DOMAIN}`
                 },
                 body: JSON.stringify({ login: loginCredentials, password })
             });

@@ -18,8 +18,7 @@ const Home = () => {
             const response = await fetch(`${process.env.REACT_APP_API_DOMAIN}/api/recipe/`, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`,
-                    // uncomment for CORS
-                    //'Origin': ''
+                    'Origin': `${process.env.REACT_APP_DOMAIN}`
                 }
             });
             const json = await response.json();

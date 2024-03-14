@@ -15,8 +15,7 @@ export const useSignup = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // uncomment for CORS
-                //'Origin': ''
+                'Origin': `${process.env.REACT_APP_DOMAIN}`
             },
             body: JSON.stringify({email, username, password})
         });

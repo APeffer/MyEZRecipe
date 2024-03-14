@@ -12,8 +12,8 @@ const cors = require('cors')
 const recipeRoutes = require('./routes/recipeRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-const port = process.env.PORT || 3000;
-
+const port = parseInt(process.env.PORT) || 3000;
+console.log(port)
 const app = express();
 
 // middlewear
@@ -25,6 +25,9 @@ app.use(express.json());
 
 app.use((req, res, next) => {
     console.log(req.path, req.method);
+    res.setHeader('Access-Control-Allow-Origin', `${process.env.FRONTEND_DOMAIN}`);
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
 
