@@ -17,9 +17,7 @@ console.log(port)
 const app = express();
 
 // middlewear
-app.use(cors({
-    origin: false
-}))
+app.use(cors())
 
 app.use(express.json());
 
