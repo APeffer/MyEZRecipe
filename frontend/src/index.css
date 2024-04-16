@@ -140,3 +140,16 @@ form button {
   width: 120px;
 }
 
+.about-container {
+  margin-top: 20px;
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.about-container h2 {
+  padding: 20px;
+}
