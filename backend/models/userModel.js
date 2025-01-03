@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-const userSchema = new schema( {
+const userSchema = new Schema( {
     email: {
         type: String,
         required: true,
@@ -16,31 +16,45 @@ const userSchema = new schema( {
     password: {
         type: String,
         required: true,
-    }
+    },
+    recipes: [{
+        type: Schema.Types.ObjectID, ref: "Recipe"
+    }]
+
 })
 
 // static signup method
-userSchema.statics.signup = async function(email, username, password) {
+userSchema.statics.signup = async function(newUserObject) {
     // validation
-    if (!email || !username || !password) {
+    if (!newUserObject.email || !newUserObject.username || !newUserObject.password) {
+        console.log(`email: ${newUserObject.email}, username: ${newUserObject.username}, password: ${newUserObject.password}`);
+        console.log(`typeof email: ${typeof newUserObject.email}, typeof username: ${typeof newUserObject.username}, typeof password: ${typeof newUserObject.password}`);
+
         throw Error('All fields must be filled');
     }
-    if(!validator.isEmail(email)){
+    if(!validator.isEmail(newUserObject.email)){
         throw Error('Email is not valid');
     }
-    if(!validator.isStrongPassword(password)){
+    if(!validator.isStrongPassword(newUserObject.password)){
         throw Error('Password too weak');
     }
 
-    const exists = await this.findOne({ email });
+    const emailExists = await this.findOne({ email: newUserObject.email });
+    const usernameExists = await this.findOne({ username: newUserObject.username });
 
-    if(exists){
+    if(emailExists){
         throw Error('Email already in use');
     }
 
-    const hash = await bcrypt.hash(password, 10);
+    if(usernameExists){
+        throw Error('Username already in use');
+    }
+
+    const hash = await bcrypt.hash(newUserObject.password, 10);
     
-    const user = await this.create({ email, username, password: hash})
+    const user = await this.create({ ...newUserObject, password: hash})
+
+    return user
 
 }
 

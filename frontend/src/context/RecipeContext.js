@@ -8,7 +8,7 @@ export const recipesReducer = (state, action) => {
             return {
                 recipes: action.payload
             };
-        case 'CREATE_WORKOUT':
+        case 'CREATE_RECIPE':
             return {
                 recipes: [action.payload, ...state.recipes]
             };

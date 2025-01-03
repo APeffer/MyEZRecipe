@@ -1,4 +1,6 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
+
 
 if (process.env){
     console.log('process.env = true')
@@ -46,10 +48,8 @@ mongoose.connect(process.env.MONG_URI)
     })
     .catch((err)=>{
         console.log("process.env.MONG_URI = " + process.env.MONG_URI)
-
-
-        console.log(err);
-        
+        console.log(err); 
     });
 
+    
 module.exports = app;

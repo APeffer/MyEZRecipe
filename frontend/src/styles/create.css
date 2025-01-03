@@ -1,0 +1,39 @@
+.createContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+
+}
+
+.recipeFormContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+
+}
+
+.recipeFormContainer form {
+    width: 600px;
+}
+
+.recipeFormContainer title input{
+    width: 300px;
+}
+
+.recipeFormContainer label {
+    margin-top: 0.5em;
+    display: block;
+}
+
+.recipeFormContainer .description textarea {
+    min-width: 300px;
+    width: 300px;
+}
+
+.ingredientContainer {
+    display: flex;
+}
+

@@ -6,11 +6,12 @@ const SignupForm = () => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
     const { signup, error, isLoading} = useSignup();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log(`email: ${email} , username: ${username} , password: ${password} , `)
         await signup(email, username, password);
     }
 
@@ -20,6 +21,8 @@ const SignupForm = () => {
         <label>Email:</label>
         <input 
             type='email'
+            id='email'
+            placeholder="example@email.com"
             onChange={(e) => setEmail(e.target.value)}
             required
          />
@@ -28,6 +31,7 @@ const SignupForm = () => {
         <input 
             type='text' 
             id='username' 
+            placeholder=""
             maxLength='16' 
             onChange={(e) => setUsername(e.target.value)}
             required 
@@ -37,6 +41,7 @@ const SignupForm = () => {
         <input 
             type='password' 
             id='password' 
+            placeholder=""
             maxLength="32"
             minLength={8} 
             onChange={(e) => setPassword(e.target.value)}

@@ -1,5 +1,5 @@
 const express = require('express');
-const { signupUser, loginUser } = require('../controllers/userController')
+const { signupUser, loginUser, addRecipeToUser } = require('../controllers/userController')
 const cors = require('cors')
 
 const router = express.Router();
@@ -17,5 +17,7 @@ router.options('/login', cors(corsOptions));
 router.post('/signup', signupUser);
 
 router.post('/login', loginUser);
+
+router.patch('/addrecipe', addRecipeToUser)
 
 module.exports = router;

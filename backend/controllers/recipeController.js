@@ -3,19 +3,20 @@ const Recipe = require('../models/recipeModel')
 
 // create a new recipe
 const createRecipe = async (req, res) => {
-    const { title, ingredients, instructions } = req.body;
+    const { title, description, ingredients, directions, author } = req.body;
 
     let emptyFields = [];
     if(!title){
         emptyFields.push('title');
     }
+    
     if(emptyFields.length > 0) {
         return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
     }
 
     // try to add to database
     try {
-        const recipe = await Recipe.create({ title, ingredients, instructions })
+        const recipe = await Recipe.create({ title, description, ingredients, directions, author })
         res.status(200).json(recipe);
         console.log(JSON.stringify(recipe));
     } catch (error){
@@ -42,6 +43,7 @@ const getRecipes = async (req, res) => {
     res.status(200).json(recipes);
 }
 
+// delete a recipe
 const deleteRecipe = async (req, res) => {
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)){

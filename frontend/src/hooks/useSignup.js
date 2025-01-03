@@ -2,6 +2,7 @@ import { useState } from "react";
 import  { useAuthContext }  from "../hooks/useAuthContext"
 
 
+
 export const useSignup = () => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null)
@@ -19,7 +20,7 @@ export const useSignup = () => {
             },
             body: JSON.stringify({email, username, password})
         });
-
+        
         //json should be jwt
         const json = await response.json();
 
